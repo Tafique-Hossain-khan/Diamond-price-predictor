@@ -21,4 +21,6 @@ class CustomException(Exception):
     
 
 
-        
+if __name__ == "__main__":
+    obj = CustomException()
+    obj.error_message()
