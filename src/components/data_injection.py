@@ -1,13 +1,13 @@
 import os
 import sys
-sys.path.insert(0, '../src')
+
 from src.exception import CustomException
 from src.logger import logging
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
 
-
+from src.components.data_transfromation import DataTransformation
 
 ##any input we will write in this class
 ## Making this class as dataclass we dont need constructor to initiliize the variable
@@ -58,4 +58,7 @@ class DataInjection:
 
 if __name__ == "__main__":
     obj = DataInjection()
-    obj.initiate_data_ingestion()
+    train_data,test_data=obj.initiate_data_ingestion()
+    
+    preprocessor_obj = DataTransformation()
+    preprocessor_obj.initiate_data_transformation(train_data=train_data,test_data=test_data)
